@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import TabNavigator from 'react-native-tab-navigator';
 import Homeview from './MineView';
 
-
 export default class TabBar extends Component {
     static defaultProps = {
         selectedColor: 'rgb(22,131,251)',
@@ -37,6 +36,7 @@ export default class TabBar extends Component {
                     onPress={() => this.setState({selectedTab: 'home'})}>
                     {<Homeview/>}
                 </TabNavigator.Item>
+
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[1]}
@@ -47,6 +47,7 @@ export default class TabBar extends Component {
                     onPress={() => this.setState({selectedTab: 'compass'})}>
                     {<Homeview/>}
                 </TabNavigator.Item>
+
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[2]}

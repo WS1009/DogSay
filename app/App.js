@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Text, Image, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import TabNavigator from 'react-native-tab-navigator';
-import Homeview from './MineView';
+import Icon from 'react-native-vector-icons/Ionicons'
+import HomeScene from './HomeScene';
 
 export default class TabBar extends Component {
     static defaultProps = {
@@ -13,7 +13,7 @@ export default class TabBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'home',
+            selectedTab: 'HOME',
             tabName: ['首页', '发现', '我']
         }
     }
@@ -29,52 +29,43 @@ export default class TabBar extends Component {
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[0]}
-                    selected={this.state.selectedTab === 'home'}
+                    selected={this.state.selectedTab === 'HOME'}
                     selectedTitleStyle={{color: selectedColor}}
-                    renderIcon={() => <Image style={styles.tab} source={this.state.homeNormal}/>}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={this.state.homeSelected}/>}
-                    onPress={() => this.setState({selectedTab: 'home'})}>
-                    {<Homeview/>}
+                    renderIcon={() => <Icon name='md-home' size={28} color='#000'/>}
+                    renderSelectedIcon={() => <Icon name='md-home' size={28} color='#dc143c'/>}
+                    onPress={() => this.setState({selectedTab: 'HOME'})}>
+                    <HomeScene/>
                 </TabNavigator.Item>
 
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[1]}
-                    selected={this.state.selectedTab === 'compass'}
+                    selected={this.state.selectedTab === 'Find'}
                     selectedTitleStyle={{color: selectedColor}}
-                    renderIcon={() => <Image style={styles.tab} source={this.state.compassNormal}/>}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={this.state.compassSelected}/>}
-                    onPress={() => this.setState({selectedTab: 'compass'})}>
-                    {<Homeview/>}
+                    renderIcon={() => <Icon name='md-search' size={28} color='#000'/>}
+                    renderSelectedIcon={() => <Icon name='md-search' size={28} color='#dc143c'/>}
+                    onPress={() => this.setState({selectedTab: 'Find'})}>
+                    {/*<HomeScene/>*/}
                 </TabNavigator.Item>
 
                 <TabNavigator.Item
                     tabStyle={styles.tabStyle}
                     title={tabName[2]}
-                    selected={this.state.selectedTab === 'me'}
+                    selected={this.state.selectedTab === 'ME'}
                     selectedTitleStyle={{color: selectedColor}}
-                    renderIcon={() => <Image style={styles.tab} source={this.state.meNormal}/>}
-                    renderSelectedIcon={() => <Image style={styles.tab} source={this.state.meSelected}/>}
-                    onPress={() => this.setState({selectedTab: 'me'})}>
-                    {<Homeview/>}
+                    renderIcon={() => <Icon name='md-person' size={28} color='#000'/>}
+                    renderSelectedIcon={() => <Icon name='md-person' size={28} color='#dc143c'/>}
+                    onPress={() => this.setState({selectedTab: 'ME'})}>
+                    {/*<HomeScene/>*/}
                 </TabNavigator.Item>
             </TabNavigator>
         );
     }
 
-    componentWillMount() {
-        const {selectedColor, normalColor} = this.props;
-        Icon.getImageSource('md-home', 50, normalColor).then((source) => this.setState({homeNormal: source}));
-        Icon.getImageSource('md-home', 50, selectedColor).then((source) => this.setState({homeSelected: source}));
-        Icon.getImageSource('md-person', 50, normalColor).then((source) => this.setState({meNormal: source}));
-        Icon.getImageSource('md-person', 50, selectedColor).then((source) => this.setState({meSelected: source}));
-        Icon.getImageSource('md-compass', 50, normalColor).then((source) => this.setState({compassNormal: source}));
-        Icon.getImageSource('md-compass', 50, selectedColor).then((source) => this.setState({compassSelected: source}));
-    }
 }
 const styles = StyleSheet.create({
     tabbar: {
-        height: 49,
+        height: 60,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff'

@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     thumb:{
         width:width,
         height:width*0.56,
-        resizeMode:'cover',
     },
     title:{
         padding: 10,

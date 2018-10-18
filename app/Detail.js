@@ -12,6 +12,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 const {width, height}= Dimensions.get('window');
 import request from './request'
 
+//npm i react-native-video --save
+//rnpm link react-native-video
+
 export default class Detail extends Component {
     constructor(props) {
         super(props);

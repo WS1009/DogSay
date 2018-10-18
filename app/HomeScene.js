@@ -140,9 +140,9 @@ export default class HomeScene extends Component {
                     row:row
                 }
             })
-        }else{
+        }else {
             alert(row._id)
-
+        }
     }
 
     _renderRow(row){
@@ -152,7 +152,7 @@ export default class HomeScene extends Component {
                 key={row._id}
                 onSelect={()=>this._loadPage(row)}
             />
-        );
+        )
     }
 
 

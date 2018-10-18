@@ -51,7 +51,7 @@ export default class Detail extends Component {
             <View style={styles.page}>
                 <Text onPress={this._backToList} style={{fontSize:18,padding: 15,color:'red'}}>详情页面</Text>
                 <View style={styles.videoBox}>
-
+                    //视频部分
                 </View>
             </View>
         );

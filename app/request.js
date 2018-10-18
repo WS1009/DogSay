@@ -4,7 +4,7 @@ import _ from 'lodash'
 import Mock from 'mockjs'
 import config from './config'
 
-var request={}
+var request={};
 
 request.get=function (url,params) {
     if (params){

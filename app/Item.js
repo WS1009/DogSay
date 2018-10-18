@@ -10,25 +10,30 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 const {width, height}= Dimensions.get('window');
+import request from './request'
 
 export default class HomeScene extends Component {
     constructor(props) {
         super(props);
         var row=this.props.row;
         this.state=({
-            row:row
+            row:row,
+            up:row.voted,
         })
     }
 
+    _up(){
+
+    }
 
     _pressRow(){
         alert('Hello')
     }
 
     render() {
-        var row=this.props.row;
+        var row=this.state.row;
         return (
-            <TouchableHighlight onPress={()=>this._pressRow()}>
+            <TouchableHighlight onPress={()=>this.props.onSelect}>
                 <View style={styles.item}>
                     <Text style={styles.title}>{row.title}</Text>
                     <ImageBackground

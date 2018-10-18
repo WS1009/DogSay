@@ -7,7 +7,7 @@ module.exports = {
         'Content-Type': 'application/json'
     },
     api:{
-        base:'http://rapapi.org/mockjs/36685/',
+        base:'http://rap2api.taobao.org/app/mock/95104/',
         creations:'api/ws'
     }
 };

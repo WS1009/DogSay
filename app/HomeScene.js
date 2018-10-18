@@ -7,10 +7,13 @@ import {
     ListView,
     RefreshControl,
     ActivityIndicator,
+    Dimensions,
 } from 'react-native';
 import Item from './Item'
+import Detail from './Detail'
 import request from './request'
 import config from './config'
+const{width,height}= Dimensions.get('window');
 
 var cacheResults = {
     nextPage: 1,
@@ -86,6 +89,7 @@ export default class HomeScene extends Component {
         })
             .then((data) => {
                 if (data.success) {
+                    //对数组进行部分截取，并返回一个数组的副本
                     var items = cacheResults.items.slice();
                     if (page !== 0) {
                         items = items.concat(data.data);
@@ -108,7 +112,7 @@ export default class HomeScene extends Component {
                                 dataSource: that.state.dataSource.cloneWithRows(cacheResults.items)
                             })
                         }
-                    }, 200);
+                    }, 0);
 
                 }
             })
@@ -126,9 +130,28 @@ export default class HomeScene extends Component {
             })
     }
 
-    _renderRow(row) {
+    _loadPage(row){
+        const{navigator}=this.props;
+        if (navigator) {
+            navigator.push({
+                name:'detail',
+                component:Detail,
+                params:{
+                    row:row
+                }
+            })
+        }else{
+            alert(row._id)
+
+    }
+
+    _renderRow(row){
         return (
-            <Item row={row}/>
+            <Item
+                row={row}
+                key={row._id}
+                onSelect={()=>this._loadPage(row)}
+            />
         );
     }
 

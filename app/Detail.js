@@ -12,13 +12,16 @@ import Icon from 'react-native-vector-icons/Ionicons'
 const {width, height}= Dimensions.get('window');
 import request from './request'
 
-export default class HomeScene extends Component {
+export default class Detail extends Component {
     constructor(props) {
         super(props);
-        var row=this.props.row;
+        var data=this.props.row;
         this.state=({
-            row:row,
-            up:row.voted,
+            data:data,
+            rate:1,
+            mute:false,
+            repeat:false,
+            resizeMethod:'contain',
         })
     }
 
@@ -30,92 +33,44 @@ export default class HomeScene extends Component {
         alert('Hello')
     }
 
+    _backToList(){
+        let{navigator}=this.props;
+        if (navigator) {
+            this.props.navigator.pop()
+        }else{
+            alert(data._id)
+        }
+    }
+
     render() {
-        var row=this.state.row;
+        var data=this.state.data;
         return (
-            <TouchableHighlight onPress={()=>this.props.onSelect}>
-                <View style={styles.item}>
-                    <Text style={styles.title}>{row.title}</Text>
-                    <ImageBackground
-                        source={{uri:row.thumb}}
-                        style={styles.thumb}
-                    >
-                        <Icon name='md-arrow-dropright-circle' size={30} style={styles.play}/>
-                    </ImageBackground>
+            <View style={styles.page}>
+                <Text onPress={this._backToList} style={{fontSize:18,padding: 15,color:'red'}}>详情页面</Text>
+                <View style={styles.videoBox}>
 
-                    <View style={styles.itemFooter}>
-                        <View style={styles.handleBox}>
-                            <Icon name='md-heart' size={28} color='#000'/>
-                            <Text style={styles.down}>喜欢</Text>
-                        </View>
-
-                        <View style={styles.handleBox}>
-                            <Icon name='md-chatbubbles' size={28} color='#000'/>
-                            <Text style={styles.comment}>评论</Text>
-                        </View>
-                    </View>
                 </View>
-            </TouchableHighlight>
+            </View>
         );
     }
 }
 
 
 const styles = StyleSheet.create({
-    handleText:{
-        padding:10,
-        fontSize:18,
-        color:'#333',
+    page:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+        backgroundColor:'#ffffff',
     },
-    item:{
+    videoBox:{
         width:width,
-        marginBottom: 10,
-        backgroundColor:'#fff',
+        height: 360,
+        backgroundColor:'#000',
     },
-    thumb:{
+    video:{
         width:width,
-        height:width*0.56,
-        resizeMode:'cover',
-    },
-    title:{
-        padding: 10,
-        fontSize: 18,
-        color: '#333',
-    },
-    itemFooter:{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#eee',
-    },
-    handleBox:{
-        padding:10,
-        flexDirection: 'row',
-        width:width/2-0.5,
-        justifyContent: 'center',
-        backgroundColor:'#fff',
-    },
-    play:{
-        position: 'absolute',
-        bottom:14,
-        right:14,
-        width:28,
-        height:28,
-        backgroundColor:'transparent',
-        borderColor:'#fff',
-        borderWidth: 1,
-        borderRadius:15,
-        color: '#ed7b66'
-    },
-    up:{
-        fontSize:22,
-        color:'#ed7b66'
-    },
-    down:{
-        fontSize:22,
-        color:'#333',
-    },
-    comment:{
-        fontSize:22,
-        color:'#333',
+        height:360,
+        backgroundColor:'#000',
     },
 });

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Text, Image, StyleSheet} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons'
-import HomeScene from './HomeScene';
-
+import {Navigator} from 'react-native-deprecated-custom-components'
+import HomeScene from './HomeScene'
 export default class TabBar extends Component {
     static defaultProps = {
         selectedColor: 'rgb(22,131,251)',
@@ -34,7 +34,17 @@ export default class TabBar extends Component {
                     renderIcon={() => <Icon name='md-home' size={28} color='#000'/>}
                     renderSelectedIcon={() => <Icon name='md-home' size={28} color='#dc143c'/>}
                     onPress={() => this.setState({selectedTab: 'HOME'})}>
-                    <HomeScene/>
+
+                    <Navigator
+                        initialRoute={{name: HomeScene, component: HomeScene}}
+                        configureScene={(route) => {
+                            return Navigator.SceneConfigs.FloatFromRight;
+                        }}
+                        renderScene={(route, navigator) => {
+                            let Component = route.component;
+                            return <Component {...route.params} navigator={navigator}/>
+                        }}
+                    />
                 </TabNavigator.Item>
 
                 <TabNavigator.Item

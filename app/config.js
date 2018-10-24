@@ -8,6 +8,7 @@ module.exports = {
     },
     api:{
         base:'http://rap2api.taobao.org/app/mock/95104/',
-        creations:'api/ws'
+        creations:'api/ws',
+        up:'api/up'
     }
 };

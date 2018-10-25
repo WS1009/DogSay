@@ -14,7 +14,7 @@ import Detail from './Detail'
 import request from './request'
 import config from './config'
 const{width,height}= Dimensions.get('window');
-//////
+
 var cacheResults = {
     nextPage: 1,
     items: [],

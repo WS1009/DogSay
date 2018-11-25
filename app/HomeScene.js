@@ -148,8 +148,8 @@ export default class HomeScene extends Component {
     _renderRow(row){
         return (
             <Item
-                row={row}
                 key={row._id}
+                data={row}
                 onSelect={()=>this._loadPage(row)}
             />
         )
@@ -188,8 +188,6 @@ export default class HomeScene extends Component {
                         />
                     }
                 />
-
-
             </View>
         );
     }

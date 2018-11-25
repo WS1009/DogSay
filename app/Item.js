@@ -18,7 +18,7 @@ import request from './request'
 export default class HomeScene extends Component {
     constructor(props) {
         super(props);
-        var row = this.props.row;
+        const row = this.props.data;
         this.state = ({
             row: row,
             up: row.voted,

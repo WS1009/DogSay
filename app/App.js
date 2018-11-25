@@ -4,6 +4,7 @@ import TabNavigator from 'react-native-tab-navigator';
 import Icon from 'react-native-vector-icons/Ionicons'
 import {Navigator} from 'react-native-deprecated-custom-components'
 import HomeScene from './HomeScene'
+
 export default class TabBar extends Component {
     static defaultProps = {
         selectedColor: 'rgb(22,131,251)',
@@ -36,7 +37,7 @@ export default class TabBar extends Component {
                     onPress={() => this.setState({selectedTab: 'HOME'})}>
 
                     <Navigator
-                        initialRoute={{name: "HomeScene", component: HomeScene}}
+                        initialRoute={{name: 'home', component: HomeScene}}
                         configureScene={(route) => {
                             return Navigator.SceneConfigs.FloatFromRight;
                         }}

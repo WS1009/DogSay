@@ -36,7 +36,7 @@ export default class TabBar extends Component {
                     onPress={() => this.setState({selectedTab: 'HOME'})}>
 
                     <Navigator
-                        initialRoute={{name: HomeScene, component: HomeScene}}
+                        initialRoute={{name: "HomeScene", component: HomeScene}}
                         configureScene={(route) => {
                             return Navigator.SceneConfigs.FloatFromRight;
                         }}
